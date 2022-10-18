@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+table{background-color:#bae0e3;width:100%}
+table,td,th{ border:1px  solid;}
+th{background-color:#80b8bd;}
+</style>
+<body>
+
+<h2>Fă click pe criteriu pentru a ordona</h2>
+
+<div ng-app="myApp" ng-controller="namesCtrl">
+
+<table >
+<tr>
+<th ng-click="orderByMe('nume')">Nume</th>
+<th ng-click="orderByMe('prenume')">Prenume</th>
+<th ng-click="orderByMe('grupa')">Grupa</th>
+<th ng-click="orderByMe('nota')">Nota</th>
+</tr>
+<tr ng-repeat="x in names | orderBy:myOrderBy">
+<td>{{x.nume}}</td>
+<td>{{x.prenume}}</td>
+<td>{{x.grupa}}</td>
+<td>{{x.nota}}</td>
+</tr>
+</table>
+
+</div>
+
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.names = [
+        {nume:'Ion',prenume:'Rosca',grupa:'I2001',nota:7},
+        {nume:'Marin',prenume:'Arap',grupa:'IA2003',nota:8},
+        {nume:'Alina',prenume:'Stepa',grupa:'IA2003',nota:10},
+        {nume:'Arin',prenume:'David',grupa:'IA2001',nota:6},
+        {nume:'Ion',prenume:'Spinu',grupa:'I2001',nota:5},
+        {nume:'Vasile',prenume:'Albu',grupa:'IA2003',nota:9},
+        ];
+    $scope.orderByMe = function(x) {
+        $scope.myOrderBy = x;
+    }
+});
+</script>
+
+</body>
+</html>

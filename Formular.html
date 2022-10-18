@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        body{background-color: beige;}
+        input,select{background-color: bisque;}
+    </style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+  <form name="myForm" novalidate>
+    <h2>Formular</h2>
+    Numele:
+<input ng-model="FirstName" name="FirstName"  required>
+<span ng-show="myForm.FirstName.$touched && myForm.FirstName.$invalid">The name is required.</span>
+    <br><br>
+    Numele dumneavoastra: {{FirstName}}<br><br>
+    
+    Prenumele:
+<input ng-model="LastName" name="LastName"  required>
+<span ng-show="myForm.LastName.$touched && myForm.LastName.$invalid">The name is required.</span><br><br>
+    Prenumele dumneavoastra: {{LastName}}<br><br>
+    
+    Data nasterii:
+    <input type="date" ng-model="userDate" max="2004-01-01" required><br><br>
+    Data nasterii dumneavoastra: {{userDate |date: "dd MMMM y" }}<br><br>
+    
+ 
+    Sexul:
+<input type="radio"id="fem"name="sex"value="feminin"ng-model="user.sex"ng-disabled="myForm.$invalid">feminin
+<input type="radio"id="masc"name="sex"value="masculin"ng-model="user.sex"ng-disabled="myForm.$invalid">masculin<br><br>
+   	Sexul: {{user.sex}}<br><br>
+    
+     Studiile:
+	<select ng-model="userStudii" ng-disabled="myForm.$invalid" >
+	<option ng-repeat="x in studii">{{x}}</option></select> <br><br>
+	Studiile dumneavoastra: {{userStudii}}<br>
+
+  </form>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.studii = ["Liceu", "Colegiu", "Universitate"];
+});
+
+</script>
+
+</body>
+</html>

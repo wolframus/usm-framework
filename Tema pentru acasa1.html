@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+body{background-color:lightblue; text-align:center;}
+input,select{background-color:#329ea8;}
+</style>
+<body>
+
+<div ng-app="myApp" ng-controller="operatieCtrl">
+<div class="calculator">
+<h2>Calculator</h2>
+Primul numar:
+<input type="number" ng-model="first"><br><br>
+Operatorul:
+<select ng-model="op" name="operator" id="op">
+  <option value="+">+</option>
+  <option value="-">-</option>
+  <option value="*">*</option>
+  <option value="/">/</option>
+</select><br><br>
+Al doilea numar:
+<input type="number" ng-model="second"><br>
+<p>Afisare prin functie</p>
+Rezultat= {{rezultat()}}<br>
+</div>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('operatieCtrl', function($scope) {
+  $scope.first;
+  $scope.second;
+  $scope.op;
+  $scope.er = "Nu puteti imparti la 0"
+  $scope.rezultat = function(){
+  if($scope.op=="+"){
+    return $scope.first + $scope.second;}
+    
+  else if($scope.op=="-"){
+    return $scope.first - $scope.second;}
+    
+  else if($scope.op=="*"){
+    return $scope.first * $scope.second;}
+    
+   else if($scope.op=="/"&& $scope.second=="0"){
+    return $scope.er;}
+ 
+  else if($scope.op=="/"){
+    return $scope.first / $scope.second;}
+    
+
+ 
+    
+    };
+});
+</script>
+
+
+</body>
+</html>
