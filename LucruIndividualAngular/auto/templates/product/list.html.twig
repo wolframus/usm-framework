@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	All products
+{% endblock %}
+
+{% block body %}
+
+	<section class="container text-slate-900 mx-auto mt-10  text-white">
+		<center><div class="mb-8">
+			<h1 class="text-4xl font-semibold font-serif">AUTOSALON</h1>
+			
+		</div></center>
+        
+        <div class="container">
+		<div class="row align-items-lg-center justify-content-lg-between">
+			{% for product in products %}
+				{% include "product/_card.html.twig"  with  {'product': product } %}
+			{% endfor %}
+		</div>
+        </div>
+		<div id="paginator" class="mt-8 mb-8 text-center">
+			{% if previous >= 0 %}
+				<a class="p-3 rounded-lg  text-white bg-blue-500" href="{{ path('app_product_list', { page: previous }) }}">Back</a>
+			{% endif %}
+			{% if next < products|length %}
+				<a  class="p-3 rounded-lg  text-white bg-blue-500" href="{{ path('app_product_list', { page: next }) }}">Next</a>
+			{% endif %}
+		</div>
+	</section>
+{% endblock %}

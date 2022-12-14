@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ product.name }}
+{% endblock %}
+
+{% block body %}
+	<section class="container max-w-6xl text-slate-900 mx-auto mt-10" style="background: white;">
+		<div class="flex flex-row gap-8 items-center">
+			<div class="w-1/3">
+				<img class="rounded float-left object-cover h-96 w-96 rounded-sm shadow-xl" src="{{ product.imageUrl }}" alt="image description">
+			</div>
+			<div class="w-2/3">
+				<div class="flex items-center space-x-3" >
+					<center><p class="text-4xl font-serif font-bold">{{ product.name }}</p></center><br><hr>
+					
+				</div>
+				<div class="mt-7">
+					<p class="text-1xl font-serif ">{{ product.description }}</p>
+				</div>
+				<div class="mt-4">
+					<p class="text-2xl font-semibold">PRICE:
+						<span class="text-2xl font-normal">{{ product.price|format_currency('USD') }}
+						</span>
+					</p>
+				</div>
+				<div class="mt-7">
+					<a class="border border-blue-500 bg-black text-black px-2 py-2 rounded hover:ring-2" href="#">BUY</a>
+					<a class="border border-blue-500 bg-black text-black px-2 py-2 rounded hover:ring-2" href="{{ path('app_product_update', { id: product.id }) }}">UPDATE</a>
+					<a class="border border-blue-500  px-2 py-2 rounded hover:ring-2" href="{{ path('app_product_list') }}">BACK</a>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

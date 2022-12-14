@@ -1,0 +1,21 @@
+{# <div class=" bg-blue-300 rounded-lg shadow-lg flex flex-col">
+	<div class="w-96">
+		<img class="object-cover h-96 w-96 rounded-t-lg" src="{{ product.imageUrl }}" alt="">
+	</div>
+	<div class="flex flex-col px-7">
+		<div class="text-xl  text-center mt-3">{{ product.name }}</div>
+		<div class="text-md line-clamp-2">{{ product.description }}</div>
+	</div>
+</div> #}
+
+
+
+<div class="card text-dark" style="width: 18rem; margin-bottom:15px;">
+  <img src="{{ product.imageUrl }}" class="card-img-top object-cover w-96 h-60 rounded-lg" alt="...">
+  <div class="card-body">
+    <center><h4 class="card-title text-2xl"><i>{{ product.name }}</h4></i></center>
+    <p class="card-text mt-3">{{ product.description }}</p><br><center>
+    <a href="{{ path('app_product_single', { id: product.id }) }}" class="btn btn-info">MORE
+</a></center>
+  </div>
+</div>
